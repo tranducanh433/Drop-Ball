@@ -168,14 +168,15 @@ namespace CatCup.Tool
                     Vector2 spawnPos = new Vector2 (x, y);
                     GameObject _prefab = GetPrefab(zoneLst[i][j].type);
 
-                    if(_prefab == null) 
+                    if(_prefab == null)
+                    {
+                        currentStep += zoneLst[i][j].widthMulti;
                         continue;
+                    }
 
                     GameObject _spawn = Instantiate(_prefab, spawnPos, Quaternion.identity, editLevelGO.transform);
                     _spawn.GetComponent<IZoneNode>().Init(zoneLst[i][j], stepX);
                     spawnedZone.Add(_spawn);
-
-                    currentStep += zoneLst[i][j].widthMulti;
                 }
             }
         }

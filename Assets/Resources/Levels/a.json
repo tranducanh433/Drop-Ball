@@ -1,0 +1,49 @@
+[
+  [
+    {
+      "type": 2,
+      "value": 3,
+      "widthMulti": 1
+    },
+    {
+      "type": 2,
+      "value": 2,
+      "widthMulti": 1
+    },
+    {
+      "type": 2,
+      "value": 4,
+      "widthMulti": 1
+    }
+  ],
+  [
+    {
+      "type": 2,
+      "value": 2,
+      "widthMulti": 1
+    },
+    {
+      "type": 2,
+      "value": 3,
+      "widthMulti": 1
+    }
+  ],
+  [
+    {
+      "type": 2,
+      "value": 2,
+      "widthMulti": 2
+    },
+    {
+      "type": 2,
+      "value": 3,
+      "widthMulti": 1
+    }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  []
+]
