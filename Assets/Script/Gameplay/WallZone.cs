@@ -5,45 +5,16 @@ using UnityEngine;
 
 public class WallZone : MonoBehaviour, IZoneNode
 {
-    [SerializeField] GameObject[] m_centerWall;
-    [SerializeField] GameObject[] m_leftWall;
-    [SerializeField] GameObject[] m_rightWall;
+    [SerializeField] SpriteRenderer m_sr;
+    [SerializeField] CapsuleCollider2D m_collider;
 
 
 
-    public void Init(ZoneData zoneData, float width)
+    public void Init(IDData idData, float width, float angle)
     {
-        int wallID = zoneData.value;
-
-        int totalLength = m_centerWall.Length + m_leftWall.Length + m_rightWall.Length;
-        if (wallID >= totalLength)
-            return;
-
-        for (int i = 0; i < totalLength; i++)
-        {
-            if(i < m_centerWall.Length)
-            {
-                m_centerWall[i].SetActive(i == wallID);
-            }
-            else if (i < m_leftWall.Length + m_centerWall.Length)
-            {
-                m_leftWall[i - m_centerWall.Length].SetActive(i == wallID);
-            }
-            else if (i < m_rightWall.Length + m_centerWall.Length + m_leftWall.Length)
-            {
-                m_rightWall[i - m_centerWall.Length - m_leftWall.Length].SetActive(i == wallID);
-            }
-        }
-
-        float _left = width * zoneData.widthMulti;
-        for (int i = 0; i < m_leftWall.Length; i++)
-        {
-            m_leftWall[i].transform.position = new Vector2(transform.position.x - _left / 2, transform.position.y);
-        }
-
-        for (int i = 0; i < m_leftWall.Length; i++)
-        {
-            m_rightWall[i].transform.position = new Vector2(transform.position.x + _left / 2, transform.position.y);
-        }
+        Vector2 _size = new Vector2(width + 0.2f, m_sr.size.y);
+        m_sr.size = _size;
+        m_collider.size = _size;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }

@@ -18,14 +18,15 @@ public class UpZone : MonoBehaviour, IZoneNode
 
 
 
-    public void Init(ZoneData zoneData, float width)
+    public void Init(IDData idData, float width, float angle)
     {
-        m_pushForce = zoneData.value;
-        Vector2 _size = new Vector2(width * zoneData.widthMulti, m_sr.size.y);
+        m_pushForce = idData.value;
+        Vector2 _size = new Vector2(width, m_sr.size.y);
         m_sr.size = _size;
         m_collider.size = _size;
         m_wallLeft.position = new Vector2(transform.position.x - _size.x / 2, transform.position.y);
         m_wallRight.position = new Vector2(transform.position.x + _size.x / 2, transform.position.y);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

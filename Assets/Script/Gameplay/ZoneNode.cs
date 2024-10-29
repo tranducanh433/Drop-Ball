@@ -5,5 +5,5 @@ using UnityEngine;
 
 public interface IZoneNode
 {
-    public void Init(ZoneData zoneData, float width);
+    public void Init(IDData idData, float width, float angle);
 }

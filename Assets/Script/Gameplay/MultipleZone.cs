@@ -22,16 +22,17 @@ public class MultipleZone : MonoBehaviour, IZoneNode
     [SerializeField] Transform m_wallLeft;
     [SerializeField] Transform m_wallRight;
 
-    public void Init(ZoneData zoneData, float width)
+    public void Init(IDData idData, float width, float angle)
     {
-        m_multiple = zoneData.value;
-        Vector2 _size = new Vector2(width * zoneData.widthMulti, m_sr.size.y);
+        m_multiple = idData.value;
+        Vector2 _size = new Vector2(width, m_sr.size.y);
         m_sr.size = _size;
         m_collider.size = _size;
         m_wallLeft.position = new Vector2(transform.position.x - _size.x / 2, transform.position.y);
         m_wallRight.position = new Vector2(transform.position.x + _size.x / 2, transform.position.y);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        if (zoneData.type == ZONE_TYPE.HIDDEN_MULTIPLE)
+        if (idData.type == ZONE_TYPE.HIDDEN_MULTIPLE)
         {
             DisplayHidden();
         }

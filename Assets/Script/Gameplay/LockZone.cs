@@ -23,10 +23,10 @@ public class LockZone : MonoBehaviour, IZoneNode
     int m_currentBallNeed = 0;
 
 
-    public void Init(ZoneData zoneData, float width)
+    public void Init(IDData idData, float width, float angle)
     {
-        m_ballRequire = zoneData.value;
-        Vector2 _size = new Vector2(width * zoneData.widthMulti, m_sr.size.y);
+        m_ballRequire = idData.value;
+        Vector2 _size = new Vector2(width, m_sr.size.y);
         m_sr.size = _size;
         m_collider.size = _size;
         m_checkCollider.size = new Vector2(_size.x, 0.5f);
@@ -34,6 +34,7 @@ public class LockZone : MonoBehaviour, IZoneNode
         m_wallRight.position = new Vector2(transform.position.x + _size.x / 2, transform.position.y);
         m_requireText.text = m_ballRequire.ToString();
 
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void Start()
