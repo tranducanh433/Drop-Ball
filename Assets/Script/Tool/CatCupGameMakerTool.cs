@@ -267,30 +267,30 @@ namespace CatCup.Tool
 
         public void SetSize(Vector2 newSize)
         {
-            for (int row = 0; row < newSize.y; row++)
+            for (int row = 0; row < newSize.x; row++)
             {
                 if (row >= m_nodeLst.Count)
                 {
                      m_nodeLst.Add(new List<ZoneNode>());
                 }
 
-                for (int column = 0; column < newSize.x; column++)
+                for (int column = 0; column < newSize.y; column++)
                 {
                     if (column >= m_nodeLst[row].Count)
                     {
                         m_nodeLst[row].Add(new ZoneNode());
                     }
 
-                    if(column == newSize.x - 1)
+                    if(column == newSize.y - 1)
                     {
-                        while (newSize.x < m_nodeLst[row].Count)
+                        while (newSize.y < m_nodeLst[row].Count)
                         {
                             m_nodeLst[row].RemoveAt(m_nodeLst[row].Count - 1);
                         }
                     }
                 }
 
-                if (row == newSize.y - 1)
+                if (row == newSize.x - 1)
                 {
                     while (newSize.x < m_nodeLst.Count)
                     {
